@@ -1,8 +1,15 @@
 "use client"
 
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
-import { cn } from "@/lib/utils"
+import {
+  Box,
+  Container,
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Chip,
+} from "@mui/material"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 interface Role {
   title: string
@@ -94,99 +101,193 @@ const roles: Role[] = [
   },
 ]
 
-function ExperienceItem({ role }: { role: Role }) {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <div className="border-t border-border">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-start justify-between gap-4 py-6 text-left transition-colors hover:bg-muted/30 px-2 -mx-2 rounded-lg"
-        aria-expanded={isOpen}
-      >
-        <div className="flex-1">
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
-            <h3 className="font-serif text-xl tracking-tight text-foreground md:text-2xl">
-              {role.company}
-            </h3>
-            <span className="text-sm text-muted-foreground">
-              {role.period}
-            </span>
-          </div>
-          <p className="mt-1 text-sm text-muted-foreground">{role.title}</p>
-        </div>
-        <ChevronDown
-          className={cn(
-            "mt-2 h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
-            isOpen && "rotate-180"
-          )}
-        />
-      </button>
-
-      <div
-        className={cn(
-          "grid transition-all duration-300 ease-in-out",
-          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        )}
-      >
-        <div className="overflow-hidden">
-          <div className="pb-6 px-2 -mx-2">
-            <p className="text-sm text-muted-foreground mb-1">{role.location}</p>
-            <p className="text-base leading-relaxed text-muted-foreground">
-              {role.description}
-            </p>
-
-            {role.achievements && role.achievements.length > 0 && (
-              <ul className="mt-4 space-y-2">
-                {role.achievements.map((achievement, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
-                  >
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                    {achievement}
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {role.tags && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {role.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export function Experience() {
   return (
-    <section id="experience" className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-16">
-          <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+    <Box
+      component="section"
+      id="experience"
+      sx={{
+        marginTop: "80px",
+        paddingX: 3,
+        paddingY: { xs: 6, lg: 8 },
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box sx={{ marginBottom: 6 }}>
+          <Typography
+            variant="caption"
+            sx={{
+              display: "block",
+              marginBottom: 1,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "text.secondary",
+            }}
+          >
             Experience
-          </p>
-          <div className="h-px w-12 bg-accent" />
-        </div>
+          </Typography>
+          <Box
+            sx={{
+              height: "1px",
+              width: "48px",
+              backgroundColor: "primary.main",
+            }}
+          />
+        </Box>
 
-        <div>
-          {roles.map((role) => (
-            <ExperienceItem key={`${role.company}-${role.period}`} role={role} />
+        <Box>
+          {roles.map((role, index) => (
+            <Accordion
+              key={`${role.company}-${role.period}`}
+              sx={{
+                border: "none",
+                borderBottom: "1px solid",
+                borderColor: "divider",
+                "&:before": { display: "none" },
+                "&.Mui-expanded": {
+                  margin: 0,
+                },
+              }}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                sx={{
+                  paddingX: 1,
+                  paddingY: 2,
+                  "&:hover": {
+                    backgroundColor: "action.hover",
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", sm: "row" },
+                    width: "100%",
+                    gap: 2,
+                  }}
+                >
+                  <Box>
+                    <Typography
+                      sx={{
+                        fontFamily: "serif",
+                        fontSize: { xs: "18px", md: "20px" },
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {role.company}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        marginTop: 0.5,
+                        color: "text.secondary",
+                      }}
+                    >
+                      {role.title}
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      whiteSpace: "nowrap",
+                      marginTop: { xs: 0.5, sm: 0.5 },
+                    }}
+                  >
+                    {role.period}
+                  </Typography>
+                </Box>
+              </AccordionSummary>
+              <AccordionDetails
+                sx={{
+                  paddingX: 1,
+                  paddingY: 2,
+                  backgroundColor: "background.paper",
+                }}
+              >
+                <Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      marginBottom: 1,
+                    }}
+                  >
+                    {role.location}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontSize: { xs: "16px", lg: "18px" },
+                      lineHeight: 1.8,
+                      color: "text.secondary",
+                      marginBottom: 2,
+                    }}
+                  >
+                    {role.description}
+                  </Typography>
+
+                  {role.achievements && role.achievements.length > 0 && (
+                    <Box sx={{ marginTop: 2, marginBottom: 2 }}>
+                      {role.achievements.map((achievement, i) => (
+                        <Box
+                          key={i}
+                          sx={{
+                            display: "flex",
+                            gap: 2,
+                            marginBottom: 1,
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              width: 6,
+                              height: 6,
+                              borderRadius: "50%",
+                              backgroundColor: "primary.main",
+                              marginTop: 1,
+                              flexShrink: 0,
+                            }}
+                          />
+                          <Typography
+                            variant="body1"
+                            sx={{
+                              fontSize: { xs: "16px", lg: "18px" },
+                              lineHeight: 1.8,
+                              color: "text.secondary",
+                            }}
+                          >
+                            {achievement}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  )}
+
+                  {role.tags && role.tags.length > 0 && (
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                      {role.tags.map((tag) => (
+                        <Chip
+                          key={tag}
+                          label={tag}
+                          size="small"
+                          sx={{
+                            borderRadius: "8px",
+                            backgroundColor: "action.selected",
+                            color: "text.primary",
+                            fontWeight: 500,
+                            "&:hover": { backgroundColor: "action.focus" },
+                          }}
+                        />
+                      ))}
+                    </Box>
+                  )}
+                </Box>
+              </AccordionDetails>
+            </Accordion>
           ))}
-          <div className="border-t border-border" />
-        </div>
-      </div>
-    </section>
+        </Box>
+      </Container>
+    </Box>
   )
 }

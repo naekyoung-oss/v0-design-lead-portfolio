@@ -1,4 +1,5 @@
-import { Quote } from "lucide-react"
+import { Box, Container, Grid, Card, CardContent, Typography, Avatar } from "@mui/material"
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote"
 
 const testimonials = [
   {
@@ -17,42 +18,99 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="bg-card px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-16">
-          <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+    <Box
+      component="section"
+      sx={{
+        backgroundColor: "rgba(0, 0, 0, 0.02)",
+        paddingX: 3,
+        paddingY: { xs: 6, lg: 8 },
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box sx={{ marginBottom: 6 }}>
+          <Typography
+            variant="caption"
+            sx={{
+              display: "block",
+              marginBottom: 1,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "text.secondary",
+            }}
+          >
             Recommendations
-          </p>
-          <div className="h-px w-12 bg-accent" />
-        </div>
+          </Typography>
+          <Box
+            sx={{
+              height: "1px",
+              width: "48px",
+              backgroundColor: "primary.main",
+            }}
+          />
+        </Box>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <Grid container spacing={3}>
           {testimonials.map((t) => (
-            <blockquote
-              key={t.author}
-              className="relative rounded-2xl border border-border bg-background p-8"
-            >
-              <Quote className="mb-4 h-6 w-6 text-accent/40" />
-              <p className="text-base leading-relaxed text-muted-foreground italic">
-                {`"${t.quote}"`}
-              </p>
-              <footer className="mt-6 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted font-serif text-sm text-foreground">
-                  {t.author.charAt(0)}
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">
-                    {t.author}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.relationship}
-                  </p>
-                </div>
-              </footer>
-            </blockquote>
+            <Grid item xs={12} md={6} key={t.author}>
+              <Card
+                sx={{
+                  border: "1px solid",
+                  borderColor: "divider",
+                  borderRadius: 3,
+                  height: "100%",
+                }}
+              >
+                <CardContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  <FormatQuoteIcon
+                    sx={{
+                      fontSize: 32,
+                      opacity: 0.1,
+                      color: "primary.main",
+                    }}
+                  />
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontStyle: "italic",
+                      lineHeight: 1.8,
+                      color: "text.secondary",
+                    }}
+                  >
+                    "{t.quote}"
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2,
+                      marginTop: "auto",
+                    }}
+                  >
+                    <Avatar
+                      sx={{
+                        width: 40,
+                        height: 40,
+                        backgroundColor: "action.hover",
+                        color: "text.primary",
+                        fontFamily: "serif",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {t.author.charAt(0)}
+                    </Avatar>
+                    <Box>
+                      <Typography variant="subtitle2">{t.author}</Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        {t.relationship}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </div>
-      </div>
-    </section>
+        </Grid>
+      </Container>
+    </Box>
   )
 }

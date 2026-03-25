@@ -10,39 +10,27 @@
 
 @layer base {
   :root {
-    --background: 40 20% 97%;
-    --foreground: 30 10% 10%;
-    --card: 40 15% 95%;
-    --card-foreground: 30 10% 10%;
-    --popover: 40 20% 97%;
-    --popover-foreground: 30 10% 10%;
-    --primary: 30 10% 10%;
-    --primary-foreground: 40 20% 97%;
-    --secondary: 35 12% 90%;
-    --secondary-foreground: 30 10% 10%;
-    --muted: 35 10% 92%;
-    --muted-foreground: 30 5% 45%;
-    --accent: 15 60% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 30 10% 86%;
-    --input: 30 10% 86%;
-    --ring: 30 10% 10%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    /* M3 Baseline — Light */
+    --background: 264 100% 99%;       /* #fefbff */
+    --foreground: 270 3% 11%;         /* #1c1b1d */
+    --card: 264 100% 99%;
+    --card-foreground: 270 3% 11%;
+    --popover: 264 100% 99%;
+    --popover-foreground: 270 3% 11%;
+    --primary: 254 63% 55%;           /* #6442d6 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 10% 41%;         /* #5d5d74 */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 300 11% 88%;             /* #e8e0e8 */
+    --muted-foreground: 279 13% 30%;  /* #4d4256 */
+    --accent: 292 75% 90%;            /* #f1d3f9 */
+    --accent-foreground: 283 43% 13%; /* #271430 */
+    --destructive: 12 100% 62%;       /* #ff6240 */
+    --destructive-foreground: 0 62% 16%;
+    --border: 300 11% 78%;            /* #e8e0e8 */
+    --input: 300 11% 78%;
+    --ring: 254 63% 55%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 

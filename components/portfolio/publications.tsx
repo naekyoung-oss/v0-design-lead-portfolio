@@ -1,4 +1,14 @@
-import { BookOpen, ExternalLink } from "lucide-react"
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  Chip,
+} from "@mui/material"
+import BookIcon from "@mui/icons-material/Book"
+import OpenInNewIcon from "@mui/icons-material/OpenInNew"
 
 const publications = [
   {
@@ -42,111 +52,209 @@ const education = [
 
 export function Publications() {
   return (
-    <section id="publications" className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-20 lg:grid-cols-2">
+    <Box
+      component="section"
+      id="publications"
+      sx={{
+        paddingX: 3,
+        paddingY: { xs: 6, lg: 8 },
+      }}
+    >
+      <Container maxWidth="lg">
+        <Grid container spacing={8}>
           {/* Publications */}
-          <div>
-            <div className="mb-12">
-              <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+          <Grid item xs={12} lg={6}>
+            <Box sx={{ marginBottom: 4 }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  display: "block",
+                  marginBottom: 1,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.2em",
+                  color: "text.secondary",
+                }}
+              >
                 Publications
-              </p>
-              <div className="h-px w-12 bg-accent" />
-            </div>
+              </Typography>
+              <Box
+                sx={{
+                  height: "1px",
+                  width: "48px",
+                  backgroundColor: "primary.main",
+                }}
+              />
+            </Box>
 
-            <div className="space-y-8">
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
               {publications.map((pub) => (
-                <article
+                <Card
                   key={pub.title}
-                  className="group rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
+                  sx={{
+                    border: "1px solid",
+                    borderColor: "divider",
+                    borderRadius: 2,
+                    transition: "box-shadow 0.2s",
+                    "&:hover": {
+                      boxShadow: 2,
+                    },
+                  }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted">
-                      <BookOpen className="h-5 w-5 text-accent" />
-                    </div>
-                    <div>
-                      <div className="flex items-start gap-2">
-                        <h3 className="font-serif text-lg tracking-tight text-foreground">
+                  <CardContent sx={{ display: "flex", gap: 3 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: 40,
+                        height: 40,
+                        borderRadius: 1,
+                        backgroundColor: "action.hover",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <BookIcon sx={{ color: "primary.main" }} />
+                    </Box>
+                    <Box sx={{ flex: 1 }}>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontFamily: "serif" }}
+                        >
                           {pub.title}
-                        </h3>
-                        <ExternalLink className="mt-1 h-3 w-3 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                      </div>
-                      <p className="text-sm text-muted-foreground">
+                        </Typography>
+                        <OpenInNewIcon sx={{ fontSize: "14px", opacity: 0 }} />
+                      </Box>
+                      <Typography variant="caption" color="text.secondary">
                         {pub.subtitle} &middot; {pub.year}
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ marginTop: 1, lineHeight: 1.6, color: "text.secondary" }}
+                      >
                         {pub.description}
-                      </p>
-                    </div>
-                  </div>
-                </article>
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
               ))}
-            </div>
-          </div>
+            </Box>
+          </Grid>
 
           {/* Education */}
-          <div>
-            <div className="mb-12">
-              <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+          <Grid item xs={12} lg={6}>
+            <Box sx={{ marginBottom: 4 }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  display: "block",
+                  marginBottom: 1,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.2em",
+                  color: "text.secondary",
+                }}
+              >
                 Education
-              </p>
-              <div className="h-px w-12 bg-accent" />
-            </div>
+              </Typography>
+              <Box
+                sx={{
+                  height: "1px",
+                  width: "48px",
+                  backgroundColor: "primary.main",
+                }}
+              />
+            </Box>
 
-            <div className="space-y-6">
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
               {education.map((edu) => (
-                <div
+                <Box
                   key={edu.degree}
-                  className="border-l-2 border-border pl-6 transition-colors hover:border-accent"
+                  sx={{
+                    paddingLeft: 2,
+                    borderLeft: "2px solid",
+                    borderColor: "divider",
+                    transition: "border-color 0.2s",
+                    "&:hover": {
+                      borderColor: "primary.main",
+                    },
+                  }}
                 >
-                  <h3 className="font-serif text-lg tracking-tight text-foreground">
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ fontFamily: "serif" }}
+                  >
                     {edu.degree}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
                     {edu.school}
-                  </p>
-                  <div className="mt-2 flex items-center gap-3">
-                    <span className="text-xs text-muted-foreground">
+                  </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, marginTop: 1 }}>
+                    <Typography variant="caption" color="text.secondary">
                       {edu.year}
-                    </span>
-                    <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
-                      {edu.distinction}
-                    </span>
-                  </div>
-                </div>
+                    </Typography>
+                    <Chip
+                      label={edu.distinction}
+                      size="small"
+                      variant="filled"
+                      sx={{
+                        backgroundColor: "primary.light",
+                        color: "primary.main",
+                      }}
+                    />
+                  </Box>
+                </Box>
               ))}
-            </div>
+            </Box>
 
             {/* Certifications */}
-            <div className="mt-16">
-              <div className="mb-8">
-                <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+            <Box sx={{ marginTop: 8 }}>
+              <Box sx={{ marginBottom: 3 }}>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    display: "block",
+                    marginBottom: 1,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.2em",
+                    color: "text.secondary",
+                  }}
+                >
                   Certifications
-                </p>
-                <div className="h-px w-12 bg-accent" />
-              </div>
-              <div className="space-y-4">
-                <div className="rounded-lg border border-border bg-card px-5 py-4">
-                  <p className="text-sm font-medium text-foreground">
-                    Customer Led Change: Design Thinking
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Stanford Online &middot; 2021
-                  </p>
-                </div>
-                <div className="rounded-lg border border-border bg-card px-5 py-4">
-                  <p className="text-sm font-medium text-foreground">
-                    Coding - HTML, CSS and Javascript
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    University of the Arts London &middot; 2020
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                </Typography>
+                <Box
+                  sx={{
+                    height: "1px",
+                    width: "48px",
+                    backgroundColor: "primary.main",
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <Card sx={{ border: "1px solid", borderColor: "divider" }}>
+                  <CardContent sx={{ paddingY: 2 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                      Customer Led Change: Design Thinking
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" sx={{ display: "block", marginTop: 0.5 }}>
+                      Stanford Online · 2021
+                    </Typography>
+                  </CardContent>
+                </Card>
+                <Card sx={{ border: "1px solid", borderColor: "divider" }}>
+                  <CardContent sx={{ paddingY: 2 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                      Coding - HTML, CSS and Javascript
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" sx={{ display: "block", marginTop: 0.5 }}>
+                      University of the Arts London · 2020
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   )
 }

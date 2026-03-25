@@ -1,4 +1,6 @@
-import { ArrowUpRight } from "lucide-react"
+"use client"
+
+import { Box, Container, Typography, Chip } from "@mui/material"
 
 interface Project {
   title: string
@@ -45,67 +47,131 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <section id="projects" className="bg-card px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-16">
-          <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+    <Box
+      component="section"
+      id="projects"
+      sx={{
+        marginTop: "80px",
+        paddingX: 3,
+        paddingY: { xs: 6, lg: 8 },
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box sx={{ marginBottom: 6 }}>
+          <Typography
+            variant="caption"
+            sx={{
+              display: "block",
+              marginBottom: 1,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "text.secondary",
+            }}
+          >
             Selected Projects
-          </p>
-          <div className="h-px w-12 bg-accent" />
-        </div>
+          </Typography>
+          <Box
+            sx={{
+              height: "1px",
+              width: "48px",
+              backgroundColor: "primary.main",
+            }}
+          />
+        </Box>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, gap: 4 }}>
           {projects.map((project) => (
-            <article
+            <Box
               key={project.title}
-              className="group relative rounded-2xl border border-border bg-background p-8 transition-shadow hover:shadow-lg"
+              sx={{
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: 3,
+                padding: 4,
+                transition: "box-shadow 0.2s",
+                "&:hover": { boxShadow: 3 },
+              }}
             >
-              <div className="mb-4 flex items-start justify-between">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.15em] text-accent">
-                    {project.company}
-                  </p>
-                  <h3 className="mt-1 font-serif text-2xl tracking-tight text-foreground">
-                    {project.title}
-                  </h3>
-                </div>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
+              <Typography
+                variant="caption"
+                sx={{
+                  display: "block",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.15em",
+                  color: "text.secondary",
+                  marginBottom: 0.5,
+                }}
+              >
+                {project.company}
+              </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontFamily: "serif",
+                  fontSize: { xs: "20px", md: "22px" },
+                  letterSpacing: "-0.01em",
+                  marginBottom: 2,
+                }}
+              >
+                {project.title}
+              </Typography>
 
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: { xs: "16px", lg: "18px" },
+                  lineHeight: 1.8,
+                  color: "text.secondary",
+                  marginBottom: 3,
+                }}
+              >
                 {project.description}
-              </p>
+              </Typography>
 
-              <div className="mt-6">
-                <p className="mb-2 text-xs uppercase tracking-[0.1em] text-muted-foreground">
-                  Skills Applied
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.capabilities.map((cap) => (
-                    <span
-                      key={cap}
-                      className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
-                    >
-                      {cap}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
+              <Typography
+                variant="caption"
+                sx={{
+                  display: "block",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "text.secondary",
+                  marginBottom: 1,
+                }}
+              >
+                Skills Applied
+              </Typography>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, marginBottom: 2 }}>
+                {project.capabilities.map((cap) => (
+                  <Chip
+                    key={cap}
+                    label={cap}
+                    size="small"
+                    sx={{
+                      borderRadius: "8px",
+                      backgroundColor: "action.selected",
+                      color: "text.primary",
+                      fontWeight: 500,
+                      "&:hover": { backgroundColor: "action.focus" },
+                    }}
+                  />
                 ))}
-              </div>
-            </article>
+              </Box>
+
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                {project.tags.map((tag) => (
+                  <Chip
+                    key={tag}
+                    label={tag}
+                    size="small"
+                    variant="outlined"
+                    sx={{ borderRadius: "8px", color: "text.secondary" }}
+                  />
+                ))}
+              </Box>
+            </Box>
           ))}
-        </div>
-      </div>
-    </section>
+        </Box>
+      </Container>
+    </Box>
   )
 }

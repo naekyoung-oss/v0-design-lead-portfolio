@@ -1,35 +1,38 @@
 import {
   Box,
   Container,
-  Grid,
   Typography,
-  Card,
-  CardContent,
   Link as MuiLink,
 } from "@mui/material"
 import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import EmailIcon from "@mui/icons-material/Email"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
+
+const MONO = "'Courier New', monospace"
 
 export function Contact() {
   const contactItems = [
     {
       icon: LinkedInIcon,
-      title: "LinkedIn",
-      subtitle: "linkedin.com/in/nkwak",
+      label: "LinkedIn",
+      value: "linkedin.com/in/nkwak",
       href: "https://www.linkedin.com/in/nkwak",
+      external: true,
     },
     {
       icon: EmailIcon,
-      title: "Email",
-      subtitle: "Get in touch",
+      label: "Email",
+      value: "hello@nkwak.com",
       href: "mailto:hello@nkwak.com",
+      external: false,
     },
     {
       icon: LocationOnIcon,
-      title: "Location",
-      subtitle: "London, United Kingdom",
+      label: "Location",
+      value: "London, United Kingdom",
       href: null,
+      external: false,
     },
   ]
 
@@ -37,136 +40,203 @@ export function Contact() {
     <Box
       component="section"
       id="contact"
-      sx={{
-        marginTop: "80px",
-        paddingX: 3,
-        paddingY: { xs: 6, lg: 8 },
-      }}
+      sx={{ marginTop: { xs: "59px", md: "67px" } }}
     >
-      <Container maxWidth="lg">
-        <Box sx={{ marginBottom: 6 }}>
-          <Typography
-            variant="caption"
-            sx={{
-              display: "block",
-              marginBottom: 1,
-              textTransform: "uppercase",
-              letterSpacing: "0.2em",
-              color: "text.secondary",
-            }}
-          >
-            Contact
-          </Typography>
+      {/* Section header */}
+      <Box
+        sx={{
+          px: { xs: 3, md: 6 },
+          py: { xs: 3, md: 4 },
+          borderBottom: "3px solid",
+          borderColor: "primary.main",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: MONO,
+            fontSize: "11px",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "text.secondary",
+          }}
+        >
+          — 05 —
+        </Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontSize: { xs: "32px", md: "48px" },
+            fontWeight: 900,
+            letterSpacing: "-0.03em",
+            textTransform: "uppercase",
+            color: "text.primary",
+          }}
+        >
+          Contact
+        </Typography>
+      </Box>
+
+      <Container maxWidth={false} disableGutters>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", lg: "1fr 1px 1fr" },
+          }}
+        >
+          {/* Left: CTA */}
           <Box
             sx={{
-              height: "1px",
-              width: "48px",
-              backgroundColor: "primary.main",
+              px: { xs: 3, md: 6 },
+              py: { xs: 6, md: 8 },
             }}
-          />
-        </Box>
-
-        <Grid container spacing={8}>
-          <Grid item xs={12} lg={6}>
+          >
             <Typography
               variant="h4"
               sx={{
-                fontFamily: "serif",
-                fontSize: { xs: "28px", md: "32px" },
-                letterSpacing: "-0.01em",
-                marginBottom: 2,
+                fontSize: { xs: "28px", md: "36px", lg: "44px" },
+                fontWeight: 900,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.05,
+                textTransform: "uppercase",
+                color: "text.primary",
+                mb: 3,
               }}
             >
-              Let's discuss a project or just say hello.
+              Let's discuss
+              <br />
+              a project.
             </Typography>
             <Typography
               variant="body1"
               sx={{
-                fontSize: "18px",
-                lineHeight: 1.8,
+                fontSize: { xs: "15px", md: "16px" },
+                lineHeight: 1.75,
                 color: "text.secondary",
+                maxWidth: "48ch",
               }}
             >
               I'm always open to exploring new opportunities and collaborations.
               Whether you're looking for a design leader or want to chat about
               user experience, feel free to reach out.
             </Typography>
-          </Grid>
+          </Box>
 
-          <Grid item xs={12} lg={6}>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-              {contactItems.map((item) => {
-                const IconComponent = item.icon
-                const isLink = item.href && item.href.startsWith("http")
+          {/* Divider */}
+          <Box
+            sx={{
+              backgroundColor: "divider",
+              display: { xs: "none", lg: "block" },
+            }}
+          />
 
-                const content = (
-                  <Card
-                    sx={{
-                      border: "1px solid",
-                      borderColor: "divider",
-                      borderRadius: 3,
-                      transition: "background-color 0.2s",
-                      "&:hover": {
-                        backgroundColor: "action.hover",
-                      },
-                    }}
-                  >
-                    <CardContent
+          {/* Right: contact links */}
+          <Box
+            sx={{
+              px: { xs: 3, md: 6 },
+              py: { xs: 4, md: 8 },
+              borderTop: { xs: "1px solid", lg: "none" },
+              borderColor: "divider",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: 0,
+            }}
+          >
+            {contactItems.map((item, i) => {
+              const IconComponent = item.icon
+              const inner = (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    px: 0,
+                    py: 3,
+                    borderBottom: i < contactItems.length - 1 ? "1px solid" : "none",
+                    borderColor: "divider",
+                    transition: "background-color 0.15s",
+                    cursor: item.href ? "pointer" : "default",
+                    "&:hover": item.href
+                      ? { backgroundColor: "action.hover" }
+                      : {},
+                    mx: -0,
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
+                    <Box
                       sx={{
+                        width: 40,
+                        height: 40,
+                        border: "2px solid",
+                        borderColor: "divider",
                         display: "flex",
                         alignItems: "center",
-                        gap: 2,
+                        justifyContent: "center",
+                        flexShrink: 0,
                       }}
                     >
-                      <Box
+                      <IconComponent sx={{ fontSize: 18, color: "text.secondary" }} />
+                    </Box>
+                    <Box>
+                      <Typography
                         sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: 48,
-                          height: 48,
-                          borderRadius: 1,
-                          backgroundColor: "action.hover",
+                          fontFamily: MONO,
+                          fontSize: "10px",
+                          letterSpacing: "0.14em",
+                          textTransform: "uppercase",
+                          color: "text.secondary",
+                          mb: 0.25,
                         }}
                       >
-                        <IconComponent sx={{ color: "text.primary" }} />
-                      </Box>
-                      <Box>
-                        <Typography variant="subtitle2">
-                          {item.title}
-                        </Typography>
-                        <Typography variant="caption" color="text.secondary">
-                          {item.subtitle}
-                        </Typography>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                )
+                        {item.label}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: "15px",
+                          fontWeight: 600,
+                          letterSpacing: "-0.01em",
+                          color: "text.primary",
+                        }}
+                      >
+                        {item.value}
+                      </Typography>
+                    </Box>
+                  </Box>
+                  {item.href && (
+                    <ArrowForwardIcon
+                      sx={{ fontSize: 18, color: "primary.main" }}
+                    />
+                  )}
+                </Box>
+              )
 
-                if (isLink) {
-                  return (
-                    <MuiLink
-                      key={item.title}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      underline="none"
-                    >
-                      {content}
-                    </MuiLink>
-                  )
-                } else if (item.href) {
-                  return (
-                    <MuiLink key={item.title} href={item.href} underline="none">
-                      {content}
-                    </MuiLink>
-                  )
-                }
-                return <Box key={item.title}>{content}</Box>
-              })}
-            </Box>
-          </Grid>
-        </Grid>
+              if (item.href && item.external) {
+                return (
+                  <MuiLink
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    underline="none"
+                    color="inherit"
+                  >
+                    {inner}
+                  </MuiLink>
+                )
+              } else if (item.href) {
+                return (
+                  <MuiLink key={item.label} href={item.href} underline="none" color="inherit">
+                    {inner}
+                  </MuiLink>
+                )
+              }
+              return <Box key={item.label}>{inner}</Box>
+            })}
+          </Box>
+        </Box>
       </Container>
     </Box>
   )

@@ -1,20 +1,23 @@
 "use client"
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   AppBar,
   Toolbar,
-  Button,
-  Drawer,
   Box,
   IconButton,
   useMediaQuery,
   useTheme,
+  Typography,
+  Drawer,
 } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
+import WbSunnyIcon from "@mui/icons-material/WbSunny"
+import DarkModeIcon from "@mui/icons-material/DarkMode"
+import { ColorModeContext } from "@/components/theme-provider"
 
 const navLinks = [
   { label: "About", href: "/" },
@@ -29,87 +32,172 @@ export function Header() {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
   const pathname = usePathname()
+  const { toggleColorMode, mode } = useContext(ColorModeContext)
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href)
+
+  const isDark = mode === "dark"
+  const accentColor = theme.palette.primary.main
 
   return (
     <AppBar
       position="fixed"
       elevation={0}
       sx={{
-        backgroundColor: "rgba(255, 255, 255, 0.8)",
-        backdropFilter: "blur(12px)",
-        color: "#000",
-        borderBottom: "1px solid",
-        borderColor: "divider",
+        backgroundColor: "background.default",
+        color: "text.primary",
+        borderBottom: "3px solid",
+        borderColor: "primary.main",
       }}
     >
       <Toolbar
         sx={{
-          maxWidth: "1280px",
+          maxWidth: "1440px",
           width: "100%",
           margin: "0 auto",
           display: "flex",
-          justifyContent: "flex-end",
-          padding: "8px 24px",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingX: { xs: 2, md: 4 },
+          minHeight: { xs: "56px", md: "64px" },
         }}
       >
+        {/* Monogram / Logo */}
+        <Link href="/" style={{ textDecoration: "none" }}>
+          <Typography
+            sx={{
+              fontFamily: "'Courier New', monospace",
+              fontWeight: 700,
+              fontSize: "18px",
+              letterSpacing: "0.08em",
+              color: "primary.main",
+              lineHeight: 1,
+              userSelect: "none",
+            }}
+          >
+            NK
+          </Typography>
+        </Link>
+
         {/* Desktop nav */}
         {!isMobile && (
-          <Box sx={{ display: "flex", gap: 1 }} aria-label="Main navigation">
+          <Box
+            component="nav"
+            sx={{ display: "flex", alignItems: "center", gap: 0 }}
+            aria-label="Main navigation"
+          >
             {navLinks.map((link) => {
               const active = isActive(link.href)
               return (
-                <Link key={link.href} href={link.href}>
-                  <Button
-                    disableRipple={!active}
+                <Link key={link.href} href={link.href} style={{ textDecoration: "none" }}>
+                  <Box
                     sx={{
-                      fontSize: "13px",
-                      letterSpacing: "0.05em",
-                      textTransform: "capitalize",
-                      borderRadius: "100px",
-                      paddingX: 2,
-                      paddingY: 0.75,
-                      backgroundColor: active ? "secondary.light" : "transparent",
-                      color: active ? "secondary.dark" : "text.secondary",
-                      fontWeight: active ? 600 : 400,
+                      px: 2,
+                      py: 1,
+                      fontFamily: "'Courier New', monospace",
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: active ? "primary.contrastText" : "text.secondary",
+                      backgroundColor: active ? "primary.main" : "transparent",
+                      borderLeft: active ? "none" : "1px solid transparent",
+                      cursor: "pointer",
+                      transition: "background-color 0.15s, color 0.15s",
                       "&:hover": {
-                        backgroundColor: active ? "secondary.light" : "action.hover",
-                        color: active ? "secondary.dark" : "text.primary",
+                        backgroundColor: active ? "primary.main" : "action.hover",
+                        color: active ? "primary.contrastText" : "text.primary",
                       },
                     }}
                   >
                     {link.label}
-                  </Button>
+                  </Box>
                 </Link>
               )
             })}
+
+            {/* Theme toggle */}
+            <IconButton
+              onClick={toggleColorMode}
+              size="small"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              sx={{
+                ml: 2,
+                border: "2px solid",
+                borderColor: "primary.main",
+                borderRadius: 0,
+                padding: "6px",
+                color: "primary.main",
+                "&:hover": {
+                  backgroundColor: "action.hover",
+                },
+              }}
+            >
+              {isDark ? (
+                <WbSunnyIcon sx={{ fontSize: 16 }} />
+              ) : (
+                <DarkModeIcon sx={{ fontSize: 16 }} />
+              )}
+            </IconButton>
           </Box>
         )}
 
-        {/* Mobile toggle */}
+        {/* Mobile: theme toggle + hamburger */}
         {isMobile && (
-          <IconButton
-            edge="end"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            color="inherit"
-          >
-            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <IconButton
+              onClick={toggleColorMode}
+              size="small"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              sx={{
+                border: "2px solid",
+                borderColor: "primary.main",
+                borderRadius: 0,
+                padding: "6px",
+                color: "primary.main",
+              }}
+            >
+              {isDark ? (
+                <WbSunnyIcon sx={{ fontSize: 16 }} />
+              ) : (
+                <DarkModeIcon sx={{ fontSize: 16 }} />
+              )}
+            </IconButton>
+            <IconButton
+              edge="end"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              sx={{
+                border: "2px solid",
+                borderColor: "divider",
+                borderRadius: 0,
+                padding: "6px",
+                color: "text.primary",
+              }}
+            >
+              {mobileOpen ? (
+                <CloseIcon sx={{ fontSize: 18 }} />
+              ) : (
+                <MenuIcon sx={{ fontSize: 18 }} />
+              )}
+            </IconButton>
+          </Box>
         )}
       </Toolbar>
 
-      {/* Mobile drawer */}
+      {/* Mobile full-screen drawer */}
       <Drawer
         anchor="top"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         sx={{
           "& .MuiDrawer-paper": {
-            top: "64px",
-            backgroundColor: "rgba(255, 255, 255, 0.95)",
+            top: "59px",
+            backgroundColor: "background.default",
+            borderBottom: "3px solid",
+            borderColor: "primary.main",
+            boxShadow: "none",
           },
         }}
       >
@@ -117,8 +205,7 @@ export function Header() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 1,
-            padding: 3,
+            padding: 0,
           }}
           role="presentation"
         >
@@ -129,26 +216,28 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
+                style={{ textDecoration: "none" }}
               >
-                <Button
-                  fullWidth
+                <Box
                   sx={{
-                    justifyContent: "flex-start",
-                    borderRadius: "100px",
-                    paddingX: 2,
-                    paddingY: 1,
-                    textTransform: "capitalize",
-                    backgroundColor: active ? "secondary.light" : "transparent",
-                    color: active ? "secondary.dark" : "text.secondary",
-                    fontWeight: active ? 600 : 400,
+                    px: 4,
+                    py: 2.5,
+                    borderBottom: "1px solid",
+                    borderColor: "divider",
+                    fontFamily: "'Courier New', monospace",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: active ? "primary.contrastText" : "text.primary",
+                    backgroundColor: active ? "primary.main" : "transparent",
                     "&:hover": {
-                      backgroundColor: active ? "secondary.light" : "action.hover",
-                      color: active ? "secondary.dark" : "text.primary",
+                      backgroundColor: active ? "primary.main" : "action.hover",
                     },
                   }}
                 >
                   {link.label}
-                </Button>
+                </Box>
               </Link>
             )
           })}

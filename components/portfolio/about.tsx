@@ -1,6 +1,8 @@
 "use client"
 
-import { Box, Container, Grid, Typography, Chip } from "@mui/material"
+import { Box, Container, Typography } from "@mui/material"
+
+const MONO = "'Courier New', monospace"
 
 export function About() {
   const capabilities = [
@@ -16,121 +18,217 @@ export function About() {
 
   return (
     <>
-      {/* Hero section */}
+      {/* Hero */}
       <Box
         component="section"
         sx={{
-          marginTop: "80px",
-          paddingX: 2,
-          paddingTop: 6,
-          paddingBottom: 2,
+          marginTop: { xs: "59px", md: "67px" },
+          borderBottom: "2px solid",
+          borderColor: "divider",
         }}
       >
-        <Container maxWidth="lg">
-          <Grid container spacing={6} alignItems="flex-end">
-            <Grid item xs={12} lg={6}>
+        <Container maxWidth={false} disableGutters>
+          {/* Meta row */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              px: { xs: 3, md: 6 },
+              py: 2,
+              borderBottom: "1px solid",
+              borderColor: "divider",
+            }}
+          >
+            <Typography
+              sx={{
+                fontFamily: MONO,
+                fontSize: "11px",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "text.secondary",
+              }}
+            >
+              — 01 — Design Lead
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: MONO,
+                fontSize: "11px",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "text.secondary",
+              }}
+            >
+              London, UK · J.P. Morgan
+            </Typography>
+          </Box>
+
+          {/* Name display */}
+          <Box
+            sx={{
+              px: { xs: 3, md: 6 },
+              pt: { xs: 4, md: 6 },
+              pb: { xs: 4, md: 6 },
+            }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: "clamp(56px, 12vw, 120px)" },
+                fontWeight: 900,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.9,
+                textTransform: "uppercase",
+                color: "text.primary",
+                mb: 0,
+              }}
+            >
+              Naekyoung
+            </Typography>
+            <Box sx={{ display: "flex", alignItems: "flex-end", gap: { xs: 2, md: 4 } }}>
               <Typography
-                variant="caption"
+                variant="h1"
                 sx={{
-                  display: "block",
-                  marginBottom: 1,
+                  fontSize: { xs: "clamp(56px, 12vw, 120px)" },
+                  fontWeight: 900,
+                  letterSpacing: "-0.04em",
+                  lineHeight: 0.9,
                   textTransform: "uppercase",
-                  letterSpacing: "0.2em",
+                  color: "primary.main",
+                }}
+              >
+                Kwak.
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: MONO,
+                  fontSize: { xs: "11px", md: "12px" },
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
                   color: "text.secondary",
+                  pb: { xs: 1, md: 2 },
+                  mb: 0,
+                }}
+              >
+                VP Lead
+                <br />
+                Experience Designer
+              </Typography>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* About section */}
+      <Box
+        component="section"
+        id="about"
+        sx={{ borderBottom: "2px solid", borderColor: "divider" }}
+      >
+        <Container maxWidth={false} disableGutters>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", lg: "1fr 1px 1fr" },
+              minHeight: { lg: "280px" },
+            }}
+          >
+            {/* Bio */}
+            <Box
+              sx={{
+                px: { xs: 3, md: 6 },
+                py: { xs: 5, md: 6 },
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: MONO,
+                  fontSize: "11px",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "text.secondary",
+                  mb: 2,
                 }}
               >
                 About
               </Typography>
-              <Box
-                sx={{
-                  height: "1px",
-                  width: "48px",
-                  backgroundColor: "primary.main",
-                  marginBottom: 3,
-                }}
-              />
               <Typography
-                variant="h2"
+                variant="body1"
                 sx={{
-                  fontFamily: "serif",
-                  fontSize: { xs: "32px", md: "44px", lg: "60px" },
-                  lineHeight: 1.1,
-                  letterSpacing: "-0.02em",
-                  marginTop: 2,
-                  marginBottom: 2,
+                  fontSize: { xs: "16px", md: "18px" },
+                  lineHeight: 1.75,
+                  color: "text.secondary",
+                  maxWidth: "60ch",
                 }}
               >
-                Naekyoung Kwak
+                I am passionate about building innovative solutions that elevate
+                the customer and user experience. I currently lead a small (but
+                impactful) design team shaping the future state of a firmwide data
+                ecosystem. We are actively defining new ways of working through AI
+                enablement and running practical experiments—continuously learning
+                and improving wherever possible.
               </Typography>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+            </Box>
 
-      {/* About section (merged from about.tsx) */}
-      <Box
-        component="section"
-        id="about"
-        sx={{
-          paddingX: 3,
-          paddingY: { xs: 4, lg: 6 },
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={8} columns={5}>
-            {/* Left: bio text */}
-            <Grid item xs={5} lg={3}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: "16px", lg: "18px" },
-                    lineHeight: 1.8,
-                    color: "text.secondary",
-                  }}
-                >
-                  I am passionate about building innovative solutions that elevate
-                  the customer and user experience. I currently lead a small (but
-                  impactful) design team shaping the future state of a firmwide data
-                  ecosystem. We are actively defining new ways of working through AI
-                  enablement and running practical experiments—continuously learning
-                  and improving wherever possible.
-                </Typography>
-              </Box>
-            </Grid>
+            {/* Divider */}
+            <Box sx={{ backgroundColor: "divider", display: { xs: "none", lg: "block" } }} />
 
-            {/* Right: capabilities */}
-            <Grid item xs={5} lg={2}>
+            {/* Capabilities */}
+            <Box
+              sx={{
+                px: { xs: 3, md: 6 },
+                py: { xs: 5, md: 6 },
+                borderTop: { xs: "1px solid", lg: "none" },
+                borderColor: "divider",
+              }}
+            >
               <Typography
-                variant="caption"
                 sx={{
-                  display: "block",
-                  marginBottom: 2,
+                  fontFamily: MONO,
+                  fontSize: "11px",
+                  letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  letterSpacing: "0.2em",
                   color: "text.secondary",
+                  mb: 3,
                 }}
               >
                 Core Capabilities
               </Typography>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                {capabilities.map((skill) => (
-                  <Chip
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 0,
+                  border: "1px solid",
+                  borderColor: "divider",
+                }}
+              >
+                {capabilities.map((skill, i) => (
+                  <Box
                     key={skill}
-                    label={skill}
-                    size="small"
                     sx={{
-                      borderRadius: "8px",
-                      backgroundColor: "action.selected",
-                      color: "text.primary",
+                      px: 2,
+                      py: 1.5,
+                      borderRight: i % 2 === 0 ? "1px solid" : "none",
+                      borderBottom:
+                        i < capabilities.length - 2 ? "1px solid" : "none",
+                      borderColor: "divider",
+                      fontSize: "13px",
                       fontWeight: 500,
-                      "&:hover": { backgroundColor: "action.focus" },
+                      color: "text.primary",
+                      lineHeight: 1.4,
                     }}
-                  />
+                  >
+                    {skill}
+                  </Box>
                 ))}
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Container>
       </Box>
     </>

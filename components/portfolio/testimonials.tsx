@@ -1,5 +1,6 @@
-import { Box, Container, Grid, Card, CardContent, Typography, Avatar } from "@mui/material"
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote"
+import { Box, Container, Typography } from "@mui/material"
+
+const MONO = "'Courier New', monospace"
 
 const testimonials = [
   {
@@ -7,12 +8,14 @@ const testimonials = [
       "Naekyoung was tremendous at guiding the design team and it was great to see her progress to the position Product Design Lead whilst we worked together, which she fully deserved to recognise her impact. She made a fantastic impression in ensuring the development team had everything they needed to be able to deliver great experiences to our customers.",
     author: "Christopher Byrne",
     relationship: "Colleague at HSBC",
+    initial: "CB",
   },
   {
     quote:
       "Naekyoung is an excellent manager. She always kept the team morale up, and I believe she is the best manager I ever had. Her ability to work through the crisis and develop new ways to achieve the targets and solve the problem were always inspiring. She is innovative, organized as well as helpful and is always open to ideas and suggestions.",
     author: "Talha Naik",
     relationship: "Direct Report at HSBC",
+    initial: "TN",
   },
 ]
 
@@ -20,96 +23,156 @@ export function Testimonials() {
   return (
     <Box
       component="section"
-      sx={{
-        backgroundColor: "rgba(0, 0, 0, 0.02)",
-        paddingX: 3,
-        paddingY: { xs: 6, lg: 8 },
-      }}
+      sx={{ borderBottom: "1px solid", borderColor: "divider" }}
     >
-      <Container maxWidth="lg">
-        <Box sx={{ marginBottom: 6 }}>
-          <Typography
-            variant="caption"
-            sx={{
-              display: "block",
-              marginBottom: 1,
-              textTransform: "uppercase",
-              letterSpacing: "0.2em",
-              color: "text.secondary",
-            }}
-          >
-            Recommendations
-          </Typography>
-          <Box
-            sx={{
-              height: "1px",
-              width: "48px",
-              backgroundColor: "primary.main",
-            }}
-          />
-        </Box>
+      {/* Section header */}
+      <Box
+        sx={{
+          px: { xs: 3, md: 6 },
+          py: { xs: 3, md: 4 },
+          borderBottom: "3px solid",
+          borderColor: "primary.main",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: MONO,
+            fontSize: "11px",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "text.secondary",
+          }}
+        >
+          — 04 —
+        </Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontSize: { xs: "32px", md: "48px" },
+            fontWeight: 900,
+            letterSpacing: "-0.03em",
+            textTransform: "uppercase",
+            color: "text.primary",
+          }}
+        >
+          Recommendations
+        </Typography>
+      </Box>
 
-        <Grid container spacing={3}>
-          {testimonials.map((t) => (
-            <Grid item xs={12} md={6} key={t.author}>
-              <Card
+      <Container maxWidth={false} disableGutters>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+          }}
+        >
+          {testimonials.map((t, i) => (
+            <Box
+              key={t.author}
+              sx={{
+                px: { xs: 3, md: 6 },
+                py: { xs: 5, md: 7 },
+                borderRight: { md: i === 0 ? "1px solid" : "none" },
+                borderBottom: { xs: i === 0 ? "1px solid" : "none", md: "none" },
+                borderColor: "divider",
+                display: "flex",
+                flexDirection: "column",
+                gap: 4,
+              }}
+            >
+              {/* Large accent quote mark */}
+              <Typography
                 sx={{
-                  border: "1px solid",
-                  borderColor: "divider",
-                  borderRadius: 3,
-                  height: "100%",
+                  fontFamily: MONO,
+                  fontSize: { xs: "60px", md: "80px" },
+                  lineHeight: 0.8,
+                  color: "primary.main",
+                  fontWeight: 900,
+                  userSelect: "none",
                 }}
               >
-                <CardContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <FormatQuoteIcon
-                    sx={{
-                      fontSize: 32,
-                      opacity: 0.1,
-                      color: "primary.main",
-                    }}
-                  />
+                "
+              </Typography>
+
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: { xs: "16px", md: "17px" },
+                  lineHeight: 1.8,
+                  color: "text.secondary",
+                  flex: 1,
+                }}
+              >
+                {t.quote}
+              </Typography>
+
+              {/* Author row */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  pt: 2,
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                }}
+              >
+                {/* Initial badge */}
+                <Box
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    border: "2px solid",
+                    borderColor: "primary.main",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
                   <Typography
-                    variant="body2"
                     sx={{
-                      fontStyle: "italic",
-                      lineHeight: 1.8,
-                      color: "text.secondary",
+                      fontFamily: MONO,
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      color: "primary.main",
+                      letterSpacing: "0.06em",
                     }}
                   >
-                    "{t.quote}"
+                    {t.initial}
                   </Typography>
-                  <Box
+                </Box>
+                <Box>
+                  <Typography
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 2,
-                      marginTop: "auto",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      letterSpacing: "-0.01em",
+                      color: "text.primary",
                     }}
                   >
-                    <Avatar
-                      sx={{
-                        width: 40,
-                        height: 40,
-                        backgroundColor: "action.hover",
-                        color: "text.primary",
-                        fontFamily: "serif",
-                        fontSize: "16px",
-                      }}
-                    >
-                      {t.author.charAt(0)}
-                    </Avatar>
-                    <Box>
-                      <Typography variant="subtitle2">{t.author}</Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {t.relationship}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
+                    {t.author}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: MONO,
+                      fontSize: "10px",
+                      letterSpacing: "0.10em",
+                      textTransform: "uppercase",
+                      color: "text.secondary",
+                      mt: 0.25,
+                    }}
+                  >
+                    {t.relationship}
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   )

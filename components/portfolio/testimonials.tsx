@@ -6,7 +6,7 @@ import { SectionHeader } from "./section-header"
 const testimonials = [
   {
     quote:
-      "Naekyoung was tremendous at guiding the design team and it was great to see her progress to the position Product Design Lead whilst we worked together, which she fully deserved to recognise her impact. She made a fantastic impression in ensuring the development team had everything they needed to be able to deliver great experiences to our customers through co-ordinating the designers and their work. Additional to this Naekyoung brings brilliant ideas to enhance the customer experience within journeys, from the conception of run ahead work right through to minor tweaks later such as defects raised. I'm sure Naekyoung will have a considerable influence on colleagues & end users wherever she goes for a long time to come, and make a great success of it.",
+      "Naekyoung was tremendous at guiding the design team and it was great to see her progress to the position Product Design Lead whilst we worked together, which she fully deserved to recognise her impact. She made a fantastic impression in ensuring the development team had everything they needed to be able to deliver great experiences to our customers through co-ordinating the designers and their work. Additionally, Naekyoung brings brilliant ideas to enhance the customer experience within journeys, from the conception of run ahead work right through to minor tweaks later such as defects raised. I'm sure Naekyoung will have a considerable influence on colleagues & end users wherever she goes for a long time to come, and make a great success of it.",
     author: "Christopher Byrne",
     relationship: "Product Manager at HSBC",
     initial: "CB",
@@ -14,7 +14,7 @@ const testimonials = [
   },
   {
     quote:
-      "Naekyoung is the manager I looked upto in many ways. She brought in lot of best practices and streamlined working into our team which helped us to create best in class designs. She have this ability to guard the team from external factors without compromising on deliverables required to business. She is very good people manager and always encouraged team to deliver best. She got deep understanding of all design facets. She is strong adviser of end user experience along with well balanced stakeholder requirements. Overall she is a pleasure to work with and an asset to any team.",
+      "Naekyoung is the manager I looked up to in many ways. She brought in a lot of best practices and streamlined working into our team which helped us to create best in class designs. She has this ability to guard the team from external factors without compromising on deliverables required to business. She is a very good people manager and always encouraged team to deliver the best. She has a deep understanding of all design facets. She is a strong adviser of end user experience along with well-balanced stakeholder requirements. Overall she is a pleasure to work with and an asset to any team.",
     author: "Ramalakshmi Dwadasi",
     relationship: "Direct Report at HSBC",
     initial: "RD",

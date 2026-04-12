@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@mui/material"
-
-const MONO = "'Courier New', monospace"
+import { MONO } from "./styles"
+import { SectionHeader } from "./section-header"
 
 const testimonials = [
   {
@@ -21,54 +21,11 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <Box
-      component="section"
-      sx={{ borderBottom: "1px solid", borderColor: "divider" }}
-    >
-      {/* Section header */}
-      <Box
-        sx={{
-          px: { xs: 3, md: 6 },
-          py: { xs: 3, md: 4 },
-          borderBottom: "3px solid",
-          borderColor: "primary.main",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Typography
-          sx={{
-            fontFamily: MONO,
-            fontSize: "11px",
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "text.secondary",
-          }}
-        >
-          — 04 —
-        </Typography>
-        <Typography
-          variant="h3"
-          sx={{
-            fontSize: { xs: "32px", md: "48px" },
-            fontWeight: 900,
-            letterSpacing: "-0.03em",
-            textTransform: "uppercase",
-            color: "text.primary",
-          }}
-        >
-          Recommendations
-        </Typography>
-      </Box>
+    <Box component="section" sx={{ borderBottom: "1px solid", borderColor: "divider" }}>
+      <SectionHeader index="— 04 —" title="Recommendations" />
 
       <Container maxWidth={false} disableGutters>
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-          }}
-        >
+        <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" } }}>
           {testimonials.map((t, i) => (
             <Box
               key={t.author}
@@ -83,44 +40,15 @@ export function Testimonials() {
                 gap: 4,
               }}
             >
-              {/* Large accent quote mark */}
-              <Typography
-                sx={{
-                  fontFamily: MONO,
-                  fontSize: { xs: "60px", md: "80px" },
-                  lineHeight: 0.8,
-                  color: "primary.main",
-                  fontWeight: 900,
-                  userSelect: "none",
-                }}
-              >
+              <Typography sx={{ fontFamily: MONO, fontSize: { xs: "60px", md: "80px" }, lineHeight: 0.8, color: "primary.main", fontWeight: 900, userSelect: "none" }}>
                 "
               </Typography>
 
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: "16px", md: "17px" },
-                  lineHeight: 1.8,
-                  color: "text.secondary",
-                  flex: 1,
-                }}
-              >
+              <Typography variant="body1" sx={{ fontSize: { xs: "16px", md: "17px" }, lineHeight: 1.8, color: "text.secondary", flex: 1 }}>
                 {t.quote}
               </Typography>
 
-              {/* Author row */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                  pt: 2,
-                  borderTop: "1px solid",
-                  borderColor: "divider",
-                }}
-              >
-                {/* Initial badge */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2, pt: 2, borderTop: "1px solid", borderColor: "divider" }}>
                 <Box
                   sx={{
                     width: 40,
@@ -133,39 +61,15 @@ export function Testimonials() {
                     flexShrink: 0,
                   }}
                 >
-                  <Typography
-                    sx={{
-                      fontFamily: MONO,
-                      fontSize: "11px",
-                      fontWeight: 700,
-                      color: "primary.main",
-                      letterSpacing: "0.06em",
-                    }}
-                  >
+                  <Typography sx={{ fontFamily: MONO, fontSize: "11px", fontWeight: 700, color: "primary.main", letterSpacing: "0.06em" }}>
                     {t.initial}
                   </Typography>
                 </Box>
                 <Box>
-                  <Typography
-                    sx={{
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      letterSpacing: "-0.01em",
-                      color: "text.primary",
-                    }}
-                  >
+                  <Typography sx={{ fontSize: "14px", fontWeight: 700, letterSpacing: "-0.01em", color: "text.primary" }}>
                     {t.author}
                   </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: MONO,
-                      fontSize: "10px",
-                      letterSpacing: "0.10em",
-                      textTransform: "uppercase",
-                      color: "text.secondary",
-                      mt: 0.25,
-                    }}
-                  >
+                  <Typography sx={{ fontFamily: MONO, fontSize: "10px", letterSpacing: "0.10em", textTransform: "uppercase", color: "text.secondary", mt: 0.25 }}>
                     {t.relationship}
                   </Typography>
                 </Box>

@@ -1,8 +1,8 @@
 "use client"
 
 import { Box, Container, Typography } from "@mui/material"
-
-const MONO = "'Courier New', monospace"
+import { MONO, tagChipSx, capabilityChipSx, hoverRowSx, bodyTextSx } from "./styles"
+import { SectionHeader } from "./section-header"
 
 interface Project {
   title: string
@@ -49,47 +49,8 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <Box
-      component="section"
-      id="projects"
-      sx={{ marginTop: { xs: "59px", md: "67px" } }}
-    >
-      {/* Section header */}
-      <Box
-        sx={{
-          px: { xs: 3, md: 6 },
-          py: { xs: 3, md: 4 },
-          borderBottom: "3px solid",
-          borderColor: "primary.main",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Typography
-          sx={{
-            fontFamily: MONO,
-            fontSize: "11px",
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "text.secondary",
-          }}
-        >
-          — 03 —
-        </Typography>
-        <Typography
-          variant="h3"
-          sx={{
-            fontSize: { xs: "32px", md: "48px" },
-            fontWeight: 900,
-            letterSpacing: "-0.03em",
-            textTransform: "uppercase",
-            color: "text.primary",
-          }}
-        >
-          Selected Work
-        </Typography>
-      </Box>
+    <Box component="section" id="projects" sx={{ marginTop: { xs: "59px", md: "67px" } }}>
+      <SectionHeader index="— 03 —" title="Selected Work" />
 
       <Container maxWidth={false} disableGutters>
         {projects.map((project, index) => {
@@ -100,8 +61,7 @@ export function Projects() {
               sx={{
                 borderBottom: "1px solid",
                 borderColor: "divider",
-                transition: "background-color 0.15s",
-                "&:hover": { backgroundColor: "action.hover" },
+                ...hoverRowSx,
               }}
             >
               <Box
@@ -116,121 +76,42 @@ export function Projects() {
               >
                 {/* Number */}
                 <Box sx={{ pt: { xs: 0, md: "6px" } }}>
-                  <Typography
-                    sx={{
-                      fontFamily: MONO,
-                      fontSize: "11px",
-                      letterSpacing: "0.12em",
-                      color: "primary.main",
-                      lineHeight: 1,
-                    }}
-                  >
+                  <Typography sx={{ fontFamily: MONO, fontSize: "11px", letterSpacing: "0.12em", color: "primary.main", lineHeight: 1 }}>
                     {num}
                   </Typography>
                 </Box>
 
                 {/* Main content */}
                 <Box>
-                  <Typography
-                    sx={{
-                      fontFamily: MONO,
-                      fontSize: "11px",
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "text.secondary",
-                      mb: 1,
-                    }}
-                  >
+                  <Typography sx={{ fontFamily: MONO, fontSize: "11px", letterSpacing: "0.14em", textTransform: "uppercase", color: "text.secondary", mb: 1 }}>
                     {project.company}
                   </Typography>
                   <Typography
                     variant="h5"
-                    sx={{
-                      fontSize: { xs: "22px", md: "28px" },
-                      fontWeight: 800,
-                      letterSpacing: "-0.025em",
-                      textTransform: "uppercase",
-                      color: "text.primary",
-                      mb: 2.5,
-                      lineHeight: 1.05,
-                    }}
+                    sx={{ fontSize: { xs: "22px", md: "28px" }, fontWeight: 800, letterSpacing: "-0.025em", textTransform: "uppercase", color: "text.primary", mb: 2.5, lineHeight: 1.05 }}
                   >
                     {project.title}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontSize: { xs: "15px", md: "16px" },
-                      lineHeight: 1.75,
-                      color: "text.secondary",
-                      mb: 3,
-                      maxWidth: "72ch",
-                    }}
-                  >
+                  <Typography variant="body1" sx={{ ...bodyTextSx, mb: 3, maxWidth: "72ch" }}>
                     {project.description}
                   </Typography>
 
-                  {/* Capabilities */}
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2 }}>
                     {project.capabilities.map((cap) => (
-                      <Box
-                        key={cap}
-                        sx={{
-                          backgroundColor: "action.selected",
-                          px: 1.5,
-                          py: 0.5,
-                          fontFamily: MONO,
-                          fontSize: "10px",
-                          letterSpacing: "0.10em",
-                          textTransform: "uppercase",
-                          color: "text.primary",
-                          fontWeight: 600,
-                        }}
-                      >
-                        {cap}
-                      </Box>
+                      <Box key={cap} sx={capabilityChipSx}>{cap}</Box>
                     ))}
                   </Box>
 
-                  {/* Tags */}
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                     {project.tags.map((tag) => (
-                      <Box
-                        key={tag}
-                        sx={{
-                          border: "1px solid",
-                          borderColor: "divider",
-                          px: 1.5,
-                          py: 0.5,
-                          fontFamily: MONO,
-                          fontSize: "10px",
-                          letterSpacing: "0.10em",
-                          textTransform: "uppercase",
-                          color: "text.secondary",
-                        }}
-                      >
-                        {tag}
-                      </Box>
+                      <Box key={tag} sx={tagChipSx}>{tag}</Box>
                     ))}
                   </Box>
                 </Box>
 
-                {/* Arrow / accent */}
-                <Box
-                  sx={{
-                    display: { xs: "none", md: "flex" },
-                    alignItems: "center",
-                    pt: "6px",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontFamily: MONO,
-                      fontSize: "20px",
-                      color: "primary.main",
-                      lineHeight: 1,
-                    }}
-                  >
+                {/* Arrow */}
+                <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", pt: "6px" }}>
+                  <Typography sx={{ fontFamily: MONO, fontSize: "20px", color: "primary.main", lineHeight: 1 }}>
                     →
                   </Typography>
                 </Box>

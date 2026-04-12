@@ -18,6 +18,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import WbSunnyIcon from "@mui/icons-material/WbSunny"
 import DarkModeIcon from "@mui/icons-material/DarkMode"
 import { ColorModeContext } from "@/components/theme-provider"
+import { MONO } from "@/components/portfolio/styles"
 
 const navLinks = [
   { label: "About", href: "/" },
@@ -38,7 +39,6 @@ export function Header() {
     href === "/" ? pathname === "/" : pathname.startsWith(href)
 
   const isDark = mode === "dark"
-  const accentColor = theme.palette.primary.main
 
   return (
     <AppBar
@@ -67,7 +67,7 @@ export function Header() {
         <Link href="/" style={{ textDecoration: "none" }}>
           <Typography
             sx={{
-              fontFamily: "'Courier New', monospace",
+              fontFamily: MONO,
               fontWeight: 700,
               fontSize: "18px",
               letterSpacing: "0.08em",
@@ -95,7 +95,7 @@ export function Header() {
                     sx={{
                       px: 2,
                       py: 1,
-                      fontFamily: "'Courier New', monospace",
+                      fontFamily: MONO,
                       fontSize: "11px",
                       fontWeight: 700,
                       letterSpacing: "0.14em",
@@ -224,7 +224,7 @@ export function Header() {
                     py: 2.5,
                     borderBottom: "1px solid",
                     borderColor: "divider",
-                    fontFamily: "'Courier New', monospace",
+                    fontFamily: MONO,
                     fontSize: "13px",
                     fontWeight: 700,
                     letterSpacing: "0.14em",

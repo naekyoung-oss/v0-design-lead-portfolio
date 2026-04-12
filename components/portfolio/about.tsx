@@ -1,8 +1,7 @@
 "use client"
 
 import { Box, Container, Typography } from "@mui/material"
-
-const MONO = "'Courier New', monospace"
+import { MONO, sectionLabelSx } from "./styles"
 
 export function About() {
   const capabilities = [
@@ -40,15 +39,7 @@ export function About() {
               borderColor: "divider",
             }}
           >
-            <Typography
-              sx={{
-                fontFamily: MONO,
-                fontSize: "11px",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "text.secondary",
-              }}
-            >
+            <Typography sx={sectionLabelSx}>
               — 01 — Design Lead
             </Typography>
             <Typography
@@ -144,16 +135,7 @@ export function About() {
                 gap: 2,
               }}
             >
-              <Typography
-                sx={{
-                  fontFamily: MONO,
-                  fontSize: "11px",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "text.secondary",
-                  mb: 2,
-                }}
-              >
+              <Typography sx={{ ...sectionLabelSx, mb: 2 }}>
                 About
               </Typography>
               <Typography
@@ -186,16 +168,7 @@ export function About() {
                 borderColor: "divider",
               }}
             >
-              <Typography
-                sx={{
-                  fontFamily: MONO,
-                  fontSize: "11px",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "text.secondary",
-                  mb: 3,
-                }}
-              >
+              <Typography sx={{ ...sectionLabelSx, mb: 3 }}>
                 Core Capabilities
               </Typography>
               <Box

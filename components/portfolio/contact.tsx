@@ -18,8 +18,8 @@ export function Contact() {
     {
       icon: EmailIcon,
       label: "Email",
-      value: "hello@nkwak.com",
-      href: "mailto:hello@nkwak.com",
+      value: "naekyoung@gmail.com",
+      href: "mailto:naekyoung@gmail.com",
       external: false,
     },
     {

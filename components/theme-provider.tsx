@@ -101,6 +101,11 @@ function buildTheme(mode: 'dark' | 'light') {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = React.useState<'dark' | 'light'>('light')
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const colorMode = React.useMemo(
     () => ({
@@ -112,6 +117,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   )
 
   const theme = React.useMemo(() => buildTheme(mode), [mode])
+
+  // Prevent hydration mismatch by rendering null until mounted
+  if (!mounted) {
+    return (
+      <ColorModeContext.Provider value={{ toggleColorMode: () => {}, mode: 'light' }}>
+        <MuiThemeProvider theme={buildTheme('light')}>
+          <CssBaseline />
+          <div suppressHydrationWarning>{children}</div>
+        </MuiThemeProvider>
+      </ColorModeContext.Provider>
+    )
+  }
 
   return (
     <ColorModeContext.Provider value={colorMode}>

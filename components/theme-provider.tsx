@@ -100,7 +100,7 @@ function buildTheme(mode: 'dark' | 'light') {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = React.useState<'dark' | 'light'>('dark')
+  const [mode, setMode] = React.useState<'dark' | 'light'>('light')
 
   const colorMode = React.useMemo(
     () => ({

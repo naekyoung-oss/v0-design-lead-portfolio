@@ -12,21 +12,7 @@ Design specification for the portfolio site. Documents the visual language, comp
 
 ## Color Tokens
 
-### Dark mode (default)
-
-| Token | Value | Usage |
-|---|---|---|
-| `background.default` | `#0a0a0a` | Page background |
-| `background.paper` | `#111111` | Card / footer surface |
-| `text.primary` | `#f0ede8` | Headlines, body |
-| `text.secondary` | `#888888` | Labels, captions, meta |
-| `primary.main` | `#e8ff3d` | Accent — borders, active states, icons |
-| `primary.contrastText` | `#0a0a0a` | Text on primary background |
-| `divider` | `#2a2a2a` | All border lines |
-| `action.hover` | `rgba(232,255,61,0.06)` | Row / item hover |
-| `action.selected` | `rgba(232,255,61,0.14)` | Selected / filled tag background |
-
-### Light mode
+### Light mode (default)
 
 | Token | Value | Usage |
 |---|---|---|
@@ -39,6 +25,20 @@ Design specification for the portfolio site. Documents the visual language, comp
 | `divider` | `#0a0a0a` | All border lines (heavier than dark) |
 | `action.hover` | `rgba(26,26,255,0.05)` | Row / item hover |
 | `action.selected` | `rgba(26,26,255,0.10)` | Selected / filled tag background |
+
+### Dark mode
+
+| Token | Value | Usage |
+|---|---|---|
+| `background.default` | `#0a0a0a` | Page background |
+| `background.paper` | `#111111` | Card / footer surface |
+| `text.primary` | `#f0ede8` | Headlines, body |
+| `text.secondary` | `#888888` | Labels, captions, meta |
+| `primary.main` | `#e8ff3d` | Accent — borders, active states, icons |
+| `primary.contrastText` | `#0a0a0a` | Text on primary background |
+| `divider` | `#2a2a2a` | All border lines |
+| `action.hover` | `rgba(232,255,61,0.06)` | Row / item hover |
+| `action.selected` | `rgba(232,255,61,0.14)` | Selected / filled tag background |
 
 ---
 

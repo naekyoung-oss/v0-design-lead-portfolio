@@ -10,7 +10,31 @@
 
 @layer base {
   :root {
-    /* Brutalist Dark (default) */
+    /* Brutalist Light (default) */
+    --background: 40 17% 94%;       /* #f0ede8 */
+    --foreground: 0 0% 4%;          /* #0a0a0a */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 240 100% 56%;        /* #1a1aff */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 33%;          /* #555555 */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 4%;
+    --muted-foreground: 0 0% 33%;
+    --accent: 240 100% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 12 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 4%;              /* #0a0a0a */
+    --input: 0 0% 4%;
+    --ring: 240 100% 56%;
+    --radius: 0rem;
+  }
+
+  .dark {
+    /* Brutalist Dark */
     --background: 0 0% 4%;          /* #0a0a0a */
     --foreground: 40 17% 94%;       /* #f0ede8 */
     --card: 0 0% 7%;                /* #111111 */
@@ -56,7 +80,6 @@
     --ring: 240 100% 56%;
     --radius: 0rem;
   }
-}
 
 @layer base {
   * {

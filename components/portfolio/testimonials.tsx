@@ -7,7 +7,7 @@ const testimonials = [
     quote:
       "Naekyoung was tremendous at guiding the design team and it was great to see her progress to the position Product Design Lead whilst we worked together, which she fully deserved to recognise her impact. She made a fantastic impression in ensuring the development team had everything they needed to be able to deliver great experiences to our customers through co-ordinating the designers and their work. Additional to this Naekyoung brings brilliant ideas to enhance the customer experience within journeys, from the conception of run ahead work right through to minor tweaks later such as defects raised. I'm sure Naekyoung will have a considerable influence on colleagues & end users wherever she goes for a long time to come, and make a great success of it.",
     author: "Christopher Byrne",
-    relationship: "Colleague at HSBC",
+    relationship: "Product Manager at HSBC",
     initial: "CB",
   },
   {

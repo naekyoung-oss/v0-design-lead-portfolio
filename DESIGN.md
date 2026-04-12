@@ -113,7 +113,7 @@ Every page/section opens with a ruled header row:
 
 ### About (Home `/`)
 
-1. **Hero** — meta row (`— 01 — Design Lead` / `London, UK · J.P. Morgan`) above the display name. Name renders in two lines: `NAEKYOUNG` (text.primary) and `KWAK.` (primary.main) with a monospace role subtitle aligned to baseline.
+1. **Hero** — meta row (`— 01 — Design Lead` / `London, UK · J. P. Morgan and Chase`) above the display name. Name renders in two lines: `NAEKYOUNG` (text.primary) and `KWAK.` (primary.main) with a monospace role subtitle aligned to baseline.
 2. **Bio + Capabilities** — two-column grid (`lg: 1fr 1px 1fr`). Left: paragraph body. Right: 2-column tag grid with `1px` cell borders.
 3. **Recommendations** — two-column grid. Each card: large accent `"` quote mark in `primary.main`, body quote, author row with square initial badge (`2px solid primary.main`).
 

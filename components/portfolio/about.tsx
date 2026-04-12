@@ -51,7 +51,7 @@ export function About() {
                 color: "text.secondary",
               }}
             >
-              London, UK · J.P. Morgan
+              London, UK · J. P. Morgan and Chase
             </Typography>
           </Box>
 

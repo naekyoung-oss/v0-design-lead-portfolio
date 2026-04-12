@@ -15,7 +15,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Naekyoung Kwak — Design Lead',
   description:
-    'Portfolio of Naekyoung Kwak, VP Lead Experience Designer at J.P. Morgan. 18+ years of experience in UX design, product design, and design leadership at companies including HSBC, Samsung, and Philips.',
+    'Portfolio of Naekyoung Kwak, VP Lead Experience Designer at J. P. Morgan and Chase. 18+ years of experience in UX design, product design, and design leadership at companies including HSBC, Samsung, and Philips.',
 }
 
 export default function RootLayout({

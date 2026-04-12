@@ -15,7 +15,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "SSI Standardisation",
-    company: "J.P. Morgan",
+    company: "J. P. Morgan and Chase",
     description:
       "Ran design discovery to frame a firm-wide problem around inconsistent settlement instruction formats. Facilitated stakeholder workshops across operations and technology, mapped end-to-end processing flows, and designed a standardised template grounded in ISO 20022 taxonomy — now published as an industry standard by FMSB.",
     capabilities: ["Design Discovery", "Stakeholder Facilitation", "Service Design", "Complex Flow Mapping"],
@@ -23,7 +23,7 @@ const projects: Project[] = [
   },
   {
     title: "WADU 2.0 & Manager Zone",
-    company: "J.P. Morgan",
+    company: "J. P. Morgan and Chase",
     description:
       "Led conceptual design for two firm-wide tools: a workforce activity data utility and an HR management dashboard. Conducted problem-framing sessions with business stakeholders, developed concept prototypes, and presented experimental design approaches to senior leadership.",
     capabilities: ["Concept Design", "Problem Framing", "Rapid Prototyping", "Executive Storytelling"],

@@ -52,22 +52,6 @@ export function Testimonials() {
               </Typography>
 
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, pt: 2, borderTop: "1px solid", borderColor: "divider" }}>
-                <Box
-                  sx={{
-                    width: 40,
-                    height: 40,
-                    border: "2px solid",
-                    borderColor: "primary.main",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <Typography sx={{ fontFamily: MONO, fontSize: "11px", fontWeight: 700, color: "primary.main", letterSpacing: "0.06em" }}>
-                    {t.initial}
-                  </Typography>
-                </Box>
                 <Box sx={{ flex: 1 }}>
                   <Typography sx={{ fontSize: "14px", fontWeight: 700, letterSpacing: "-0.01em", color: "text.primary" }}>
                     {t.author}
@@ -94,7 +78,7 @@ export function Testimonials() {
                       },
                     }}
                   >
-                    <Linkedin size={18} />
+                    <Linkedin size={20} />
                   </Box>
                 )}
               </Box>

@@ -14,6 +14,14 @@ import { useState } from "react"
 
 const MONO = "'Courier New', monospace"
 
+interface SubRole {
+  title: string
+  period: string
+  description: string
+  achievements?: string[]
+  tags?: string[]
+}
+
 interface Role {
   title: string
   company: string
@@ -22,13 +30,14 @@ interface Role {
   description: string
   achievements?: string[]
   tags?: string[]
+  subroles?: SubRole[]
 }
 
 const roles: Role[] = [
   {
     title: "VP Lead Experience Designer, CIB XD Core",
     company: "J.P. Morgan",
-    period: "2023 — Now",
+    period: "2022 — Now",
     location: "London, UK",
     description:
       "Lead design discovery and experimental projects for CIB and firm-wide business stakeholders. Focus on proposing innovative approaches tailored to the specific problems stakeholders face.",
@@ -38,15 +47,15 @@ const roles: Role[] = [
       "Manager Zone (a firmwide HR tool powered by WADU) Conceptual Designs",
     ],
     tags: ["Design Strategy", "Financial Services", "Innovation"],
-  },
-  {
-    title: "VP Lead Product Designer, CIB Payments",
-    company: "J.P. Morgan",
-    period: "2022 — 2023",
-    location: "London, UK",
-    description:
-      "Led product design for CIB Payments, delivering user-centred design solutions for complex financial payment systems.",
-    tags: ["Product Design", "Payments", "Enterprise UX"],
+    subroles: [
+      {
+        title: "VP Lead Product Designer, CIB Payments",
+        period: "2022 — 2023",
+        description:
+          "Led product design for CIB Payments, delivering user-centred design solutions for complex financial payment systems.",
+        tags: ["Product Design", "Payments", "Enterprise UX"],
+      },
+    ],
   },
   {
     title: "Product Design Manager / Design Lead",
@@ -323,6 +332,101 @@ function RoleAccordion({
                 ))}
               </Box>
             )}
+
+            {/* Subroles */}
+            {role.subroles && role.subroles.map((sub, i) => (
+              <Box
+                key={i}
+                sx={{
+                  mt: 4,
+                  pt: 4,
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "baseline", gap: 3, mb: 2 }}>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "15px", md: "16px" },
+                      fontWeight: 700,
+                      letterSpacing: "-0.01em",
+                      textTransform: "uppercase",
+                      color: "text.primary",
+                    }}
+                  >
+                    {sub.title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: MONO,
+                      fontSize: "11px",
+                      letterSpacing: "0.10em",
+                      color: "primary.main",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {sub.period}
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: { xs: "15px", md: "16px" },
+                    lineHeight: 1.75,
+                    color: "text.secondary",
+                    mb: sub.tags ? 3 : 0,
+                  }}
+                >
+                  {sub.description}
+                </Typography>
+                {sub.achievements && sub.achievements.length > 0 && (
+                  <Box sx={{ mb: 3 }}>
+                    {sub.achievements.map((achievement, j) => (
+                      <Box
+                        key={j}
+                        sx={{
+                          display: "flex",
+                          gap: 2,
+                          mb: 1.5,
+                          borderLeft: "3px solid",
+                          borderColor: "primary.main",
+                          pl: 2,
+                        }}
+                      >
+                        <Typography
+                          variant="body2"
+                          sx={{ fontSize: "14px", lineHeight: 1.65, color: "text.primary" }}
+                        >
+                          {achievement}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                )}
+                {sub.tags && sub.tags.length > 0 && (
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                    {sub.tags.map((tag) => (
+                      <Box
+                        key={tag}
+                        sx={{
+                          border: "1px solid",
+                          borderColor: "divider",
+                          px: 1.5,
+                          py: 0.5,
+                          fontFamily: MONO,
+                          fontSize: "10px",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          color: "text.secondary",
+                        }}
+                      >
+                        {tag}
+                      </Box>
+                    ))}
+                  </Box>
+                )}
+              </Box>
+            ))}
           </Box>
         </Box>
       </AccordionDetails>

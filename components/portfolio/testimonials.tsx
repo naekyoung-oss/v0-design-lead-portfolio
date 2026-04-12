@@ -12,10 +12,10 @@ const testimonials = [
   },
   {
     quote:
-      "Naekyoung is an excellent manager. She always kept the team morale up, and I believe she is the best manager I ever had. Her ability to work through the crisis and develop new ways to achieve the targets and solve the problem were always inspiring. She is innovative, organized as well as helpful and is always open to ideas and suggestions.",
-    author: "Talha Naik",
+      "Naekyoung is the manager I looked upto in many ways. She brought in lot of best practices and streamlined working into our team which helped us to create best in class designs. She have this ability to guard the team from external factors without compromising on deliverables required to business. She is very good people manager and always encouraged team to deliver best. She got deep understanding of all design facets. She is strong adviser of end user experience along with well balanced stakeholder requirements. Overall she is a pleasure to work with and an asset to any team.",
+    author: "Ramalakshmi Dwadasi",
     relationship: "Direct Report at HSBC",
-    initial: "TN",
+    initial: "RD",
   },
 ]
 

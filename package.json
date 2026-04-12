@@ -6,7 +6,9 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "screenshots": "concurrently \"next dev\" \"sleep 5 && node scripts/capture-screenshots.js\"",
+    "screenshots:prod": "next build && next start & sleep 5 && node scripts/capture-screenshots.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -64,11 +66,15 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^22",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
+    "concurrently": "^9.2.1",
+    "playwright": "^1.59.1",
     "postcss": "^8.5",
+    "puppeteer": "^24.40.0",
     "tailwindcss": "^3.4.17",
     "typescript": "5.7.3"
   },

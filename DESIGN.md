@@ -90,7 +90,7 @@ All headings are `text-transform: uppercase`. Body copy is mixed case.
 - `3px solid primary.main` bottom border
 - **Logo:** monospace "NK" in `primary.main`, links to `/`
 - **Desktop nav:** uppercase monospace labels (`11px`, `0.14em` tracking). Active item: `primary.main` background fill, `primary.contrastText` text. Inactive: `text.secondary`, hover dims to `text.primary`.
-- **Theme toggle:** square icon button, `2px solid primary.main`, `borderRadius: 0`
+- **Theme toggle:** square icon button, no border, `primary.main` color, `borderRadius: 0`
 - **Mobile:** hamburger + theme toggle. Navigation opens as a top-anchored Drawer with `3px solid primary.main` bottom border.
 
 ---

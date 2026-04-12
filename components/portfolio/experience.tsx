@@ -37,7 +37,7 @@ const roles: Role[] = [
   {
     title: "VP Lead Experience Designer, CIB XD Core",
     company: "J.P. Morgan",
-    period: "2022 — Now",
+    period: "2023 — Now",
     location: "London, UK",
     description:
       "Lead design discovery and experimental projects for CIB and firm-wide business stakeholders. Focus on proposing innovative approaches tailored to the specific problems stakeholders face.",
@@ -47,15 +47,6 @@ const roles: Role[] = [
       "Manager Zone (a firmwide HR tool powered by WADU) Conceptual Designs",
     ],
     tags: ["Design Strategy", "Financial Services", "Innovation"],
-    subroles: [
-      {
-        title: "VP Lead Product Designer, CIB Payments",
-        period: "2022 — 2023",
-        description:
-          "Led product design for CIB Payments, delivering user-centred design solutions for complex financial payment systems.",
-        tags: ["Product Design", "Payments", "Enterprise UX"],
-      },
-    ],
   },
   {
     title: "Product Design Manager / Design Lead",

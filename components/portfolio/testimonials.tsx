@@ -22,7 +22,7 @@ const testimonials = [
 export function Testimonials() {
   return (
     <Box component="section" sx={{ borderBottom: "1px solid", borderColor: "divider" }}>
-      <SectionHeader index="— 04 —" title="Recommendations" />
+      <SectionHeader title="Recommendations" />
 
       <Container maxWidth={false} disableGutters>
         <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" } }}>

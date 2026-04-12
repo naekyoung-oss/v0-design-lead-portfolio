@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@mui/material"
+import { Linkedin } from "lucide-react"
 import { MONO } from "./styles"
 import { SectionHeader } from "./section-header"
 
@@ -9,6 +10,7 @@ const testimonials = [
     author: "Christopher Byrne",
     relationship: "Product Manager at HSBC",
     initial: "CB",
+    linkedin: "https://www.linkedin.com/in/christopher-byrne-a31524104/",
   },
   {
     quote:
@@ -16,6 +18,7 @@ const testimonials = [
     author: "Ramalakshmi Dwadasi",
     relationship: "Direct Report at HSBC",
     initial: "RD",
+    linkedin: "https://www.linkedin.com/in/ramalakshmi-dwadasi-516116196/",
   },
 ]
 
@@ -65,7 +68,7 @@ export function Testimonials() {
                     {t.initial}
                   </Typography>
                 </Box>
-                <Box>
+                <Box sx={{ flex: 1 }}>
                   <Typography sx={{ fontSize: "14px", fontWeight: 700, letterSpacing: "-0.01em", color: "text.primary" }}>
                     {t.author}
                   </Typography>
@@ -73,6 +76,27 @@ export function Testimonials() {
                     {t.relationship}
                   </Typography>
                 </Box>
+                {t.linkedin && (
+                  <Box
+                    component="a"
+                    href={t.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "primary.main",
+                      textDecoration: "none",
+                      transition: "opacity 0.15s",
+                      "&:hover": {
+                        opacity: 0.7,
+                      },
+                    }}
+                  >
+                    <Linkedin size={18} />
+                  </Box>
+                )}
               </Box>
             </Box>
           ))}

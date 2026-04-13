@@ -39,15 +39,7 @@ const roles: Role[] = [
     ],
     tags: ["Design Strategy", "Financial Services", "Innovation"],
   },
-  {
-    title: "VP Lead Product Designer, CIB Payments",
-    company: "J.P. Morgan & Chase",
-    period: "2022 — 2023",
-    location: "London, UK",
-    description:
-      "Led product design for CIB Payments, delivering user-centred design solutions for complex financial payment systems.",
-    tags: ["Product Design", "Payments", "Enterprise UX"],
-  },
+
   {
     title: "Product Design Manager / Design Lead",
     company: "HSBC",
@@ -360,7 +352,7 @@ export function Experience() {
             color: "text.secondary",
           }}
         >
-          — 02 —
+          — 01 —
         </Typography>
         <Typography
           variant="h3"

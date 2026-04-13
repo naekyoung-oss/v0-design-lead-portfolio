@@ -28,7 +28,7 @@ const roles: Role[] = [
   {
     title: "VP Lead Experience Designer, CIB XD Core",
     company: "J.P. Morgan & Chase",
-    period: "2023 — Now",
+    period: "2022 — Now",
     location: "London, UK",
     description:
       "Lead design discovery and experimental projects for CIB and firm-wide business stakeholders. Focus on proposing innovative approaches tailored to the specific problems stakeholders face.",

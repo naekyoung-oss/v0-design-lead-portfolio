@@ -49,20 +49,6 @@ const roles: Role[] = [
     tags: ["Product Design", "Payments", "Enterprise UX"],
   },
   {
-    title: "Product Design Manager / Design Lead",
-    company: "HSBC",
-    period: "2020 — 2022",
-    location: "London, UK",
-    description:
-      "Oversaw iterative design processes, maintained quality and consistency. Managed and mentored designers across China, India, Poland, and the UK.",
-    achievements: [
-      "5.1 million customers registered or migrated to new mobile banking app — average registration time reduced from 15 mins to 2.7 mins",
-      "Online ID verification: average time reduced from 1–2 days (at branch) to less than 5 mins (online)",
-      "Led user authentication experience design using QR codes, push auth, biometrics, and secure codes",
-    ],
-    tags: ["Design Management", "Mobile Banking", "Identity Verification"],
-  },
-  {
     title: "User Experience Manager",
     company: "Tungsten Network",
     period: "2012 — 2020",

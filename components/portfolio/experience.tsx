@@ -69,7 +69,7 @@ const roles: Role[] = [
   },
   {
     title: "User Research Manager (Lifestyle Entertainment)",
-    company: "Philips Consumer Lifestyle",
+    company: "Philips Electronics",
     period: "2010 — 2012",
     location: "Hong Kong SAR",
     description:

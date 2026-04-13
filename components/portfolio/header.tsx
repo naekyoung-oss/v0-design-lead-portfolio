@@ -124,8 +124,6 @@ export function Header() {
               aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
               sx={{
                 ml: 2,
-                border: "2px solid",
-                borderColor: "primary.main",
                 borderRadius: 0,
                 padding: "6px",
                 color: "primary.main",
@@ -151,8 +149,6 @@ export function Header() {
               size="small"
               aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
               sx={{
-                border: "2px solid",
-                borderColor: "primary.main",
                 borderRadius: 0,
                 padding: "6px",
                 color: "primary.main",

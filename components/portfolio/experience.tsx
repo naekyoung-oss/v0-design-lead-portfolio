@@ -27,7 +27,7 @@ interface Role {
 const roles: Role[] = [
   {
     title: "VP Lead Experience Designer, CIB XD Core",
-    company: "J.P. Morgan",
+    company: "J.P. Morgan & Chase",
     period: "2023 — Now",
     location: "London, UK",
     description:
@@ -41,7 +41,7 @@ const roles: Role[] = [
   },
   {
     title: "VP Lead Product Designer, CIB Payments",
-    company: "J.P. Morgan",
+    company: "J.P. Morgan & Chase",
     period: "2022 — 2023",
     location: "London, UK",
     description:

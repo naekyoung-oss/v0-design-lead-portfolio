@@ -3,8 +3,6 @@ import { Inter } from 'next/font/google'
 
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Header } from '@/components/portfolio/header'
-import { Footer } from '@/components/portfolio/footer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -13,9 +11,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Naekyoung Kwak — Design Lead',
+  title: 'Naekyoung Kim',
   description:
-    'Portfolio of Naekyoung Kwak, VP Lead Experience Designer at J.P. Morgan. 18+ years of experience in UX design, product design, and design leadership at companies including HSBC, Samsung, and Philips.',
+    'Portfolio of Naekyoung Kim, VP Lead Experience Designer at J.P. Morgan. 18+ years of experience in UX design, product design, and design leadership at companies including HSBC, Samsung, and Philips.',
 }
 
 export default function RootLayout({
@@ -27,9 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>
         <ThemeProvider>
-          <Header />
           <main>{children}</main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>

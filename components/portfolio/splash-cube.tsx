@@ -15,11 +15,12 @@ interface NavFace {
 }
 
 const navFaces: NavFace[] = [
-  { label: "ABOUT", href: "/", position: [0, 0, 1.51], rotation: [0, 0, 0], color: "#ffffff" },
-  { label: "EXPERIENCE", href: "/experience", position: [0, 0, -1.51], rotation: [0, Math.PI, 0], color: "#ffffff" },
-  { label: "PROJECTS", href: "/projects", position: [1.51, 0, 0], rotation: [0, Math.PI / 2, 0], color: "#ffffff" },
-  { label: "EXPERIMENTS", href: "/experiments", position: [-1.51, 0, 0], rotation: [0, -Math.PI / 2, 0], color: "#ffffff" },
-  { label: "CONTACT", href: "/contact", position: [0, 1.51, 0], rotation: [-Math.PI / 2, 0, 0], color: "#ffffff" },
+  { label: "HOME", href: "/home", position: [0, 0, 1.51], rotation: [0, 0, 0], color: "#ffffff" },
+  { label: "ABOUT", href: "/about", position: [0, 0, -1.51], rotation: [0, Math.PI, 0], color: "#ffffff" },
+  { label: "EXPERIENCE", href: "/experience", position: [1.51, 0, 0], rotation: [0, Math.PI / 2, 0], color: "#ffffff" },
+  { label: "WORK", href: "/projects", position: [-1.51, 0, 0], rotation: [0, -Math.PI / 2, 0], color: "#ffffff" },
+  { label: "EXPERIMENTS", href: "/experiments", position: [0, 1.51, 0], rotation: [-Math.PI / 2, 0, 0], color: "#ffffff" },
+  { label: "CONTACT", href: "/contact", position: [0, -1.51, 0], rotation: [Math.PI / 2, 0, 0], color: "#ffffff" },
 ]
 
 function CubeFace({ face, onHover, isHovered }: { face: NavFace; onHover: (label: string | null) => void; isHovered: boolean }) {
@@ -195,7 +196,7 @@ export function SplashCube() {
         </Suspense>
       </Canvas>
 
-      {/* Title overlay */}
+      {/* Name overlay */}
       <div
         style={{
           position: "absolute",
@@ -219,49 +220,7 @@ export function SplashCube() {
         >
           Naekyoung Kim
         </h1>
-        <p
-          style={{
-            fontFamily: "'Courier New', monospace",
-            fontSize: "10px",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "#666666",
-            marginTop: "8px",
-          }}
-        >
-          Design Lead Portfolio
-        </p>
       </div>
-
-      {/* Skip link */}
-      <a
-        href="/"
-        style={{
-          position: "absolute",
-          bottom: "40px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          fontFamily: "'Courier New', monospace",
-          fontSize: "10px",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "#666666",
-          textDecoration: "none",
-          borderBottom: "1px solid #666666",
-          paddingBottom: "2px",
-          transition: "color 0.2s, border-color 0.2s",
-        }}
-        onMouseOver={(e) => {
-          e.currentTarget.style.color = "#ffffff"
-          e.currentTarget.style.borderColor = "#ffffff"
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.color = "#666666"
-          e.currentTarget.style.borderColor = "#666666"
-        }}
-      >
-        Skip Intro
-      </a>
     </div>
   )
 }

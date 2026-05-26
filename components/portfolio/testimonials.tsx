@@ -1,21 +1,20 @@
-import { Box, Container, Typography } from "@mui/material"
+import { Box, Container, Typography, IconButton } from "@mui/material"
+import LinkedInIcon from "@mui/icons-material/LinkedIn"
 
 const MONO = "'Courier New', monospace"
 
 const testimonials = [
   {
     quote:
-      "Naekyoung was tremendous at guiding the design team and it was great to see her progress to the position Product Design Lead whilst we worked together, which she fully deserved to recognise her impact. She made a fantastic impression in ensuring the development team had everything they needed to be able to deliver great experiences to our customers.",
+      "Naekyoung was tremendous at guiding the design team, and it was great to see her progress to the position of Product Design Lead whilst we worked together, which she fully deserved to recognise her impact. She made a fantastic impression in ensuring the development team had everything they needed to deliver great experiences to our customers through coordinating the designers and their work. Additionally, Naekyoung brings brilliant ideas to enhance the customer experience within journeys, from the conception of run-ahead work right through to minor tweaks later, such as defects raised. I'm sure Naekyoung will have a considerable influence on colleagues and end users wherever she goes for a long time to come and make a great success of it.",
     author: "Christopher Byrne",
-    relationship: "Colleague at HSBC",
-    initial: "CB",
+    linkedIn: "https://www.linkedin.com/in/christopher-byrne-a31524104/",
   },
   {
     quote:
-      "Naekyoung is an excellent manager. She always kept the team morale up, and I believe she is the best manager I ever had. Her ability to work through the crisis and develop new ways to achieve the targets and solve the problem were always inspiring. She is innovative, organized as well as helpful and is always open to ideas and suggestions.",
-    author: "Talha Naik",
-    relationship: "Direct Report at HSBC",
-    initial: "TN",
+      "Naekyoung is the manager I looked up to in many ways. She brought in a lot of best practices and streamlined working into our team, which helped us create best-in-class designs. She has this ability to guard the team from external factors without compromising on deliverables required by the business. She is a very good people manager and always encouraged the team to deliver their best. She has a deep understanding of all design facets. She is a strong advocate of end-user experience along with well-balanced stakeholder requirements. Overall, she is a pleasure to work with and an asset to any team.",
+    author: "Ramalakshmi Dwadasi",
+    linkedIn: "https://www.linkedin.com/in/ramalakshmi-dwadasi-516116196/",
   },
 ]
 
@@ -120,31 +119,28 @@ export function Testimonials() {
                   borderColor: "divider",
                 }}
               >
-                {/* Initial badge */}
-                <Box
+                {/* LinkedIn icon */}
+                <IconButton
+                  component="a"
+                  href={t.linkedIn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t.author}'s LinkedIn profile`}
                   sx={{
                     width: 40,
                     height: 40,
                     border: "2px solid",
                     borderColor: "primary.main",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    borderRadius: 0,
+                    color: "primary.main",
                     flexShrink: 0,
+                    "&:hover": {
+                      backgroundColor: "action.hover",
+                    },
                   }}
                 >
-                  <Typography
-                    sx={{
-                      fontFamily: MONO,
-                      fontSize: "11px",
-                      fontWeight: 700,
-                      color: "primary.main",
-                      letterSpacing: "0.06em",
-                    }}
-                  >
-                    {t.initial}
-                  </Typography>
-                </Box>
+                  <LinkedInIcon sx={{ fontSize: 20 }} />
+                </IconButton>
                 <Box>
                   <Typography
                     sx={{
@@ -155,18 +151,6 @@ export function Testimonials() {
                     }}
                   >
                     {t.author}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: MONO,
-                      fontSize: "10px",
-                      letterSpacing: "0.10em",
-                      textTransform: "uppercase",
-                      color: "text.secondary",
-                      mt: 0.25,
-                    }}
-                  >
-                    {t.relationship}
                   </Typography>
                 </Box>
               </Box>

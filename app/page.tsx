@@ -1,11 +1,5 @@
-import { About } from "@/components/portfolio/about"
-import { Testimonials } from "@/components/portfolio/testimonials"
+import { SplashCube } from "@/components/portfolio/splash-cube"
 
 export default function Page() {
-  return (
-    <>
-      <About />
-      <Testimonials />
-    </>
-  )
+  return <SplashCube />
 }

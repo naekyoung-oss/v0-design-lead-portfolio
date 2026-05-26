@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback, Suspense } from "react"
 import { Canvas, useFrame, ThreeEvent } from "@react-three/fiber"
-import { Text, Html, OrbitControls } from "@react-three/drei"
+import { Html, OrbitControls } from "@react-three/drei"
 import { useRouter } from "next/navigation"
 import * as THREE from "three"
 
@@ -47,17 +47,27 @@ function CubeFace({ face, onHover, isHovered }: { face: NavFace; onHover: (label
         <planeGeometry args={[2.8, 2.8]} />
         <meshBasicMaterial transparent opacity={0} />
       </mesh>
-      <Text
+      <Html
         position={[0, 0, 0.01]}
-        fontSize={0.28}
-        color={isHovered ? "#000000" : "#ffffff"}
-        anchorX="center"
-        anchorY="middle"
-        font="/fonts/GeistMono-Bold.ttf"
-        letterSpacing={0.15}
+        center
+        style={{
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
       >
-        {face.label}
-      </Text>
+        <span
+          style={{
+            fontFamily: "'Courier New', monospace",
+            fontSize: "14px",
+            fontWeight: 700,
+            letterSpacing: "0.15em",
+            color: isHovered ? "#000000" : "#ffffff",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {face.label}
+        </span>
+      </Html>
     </group>
   )
 }

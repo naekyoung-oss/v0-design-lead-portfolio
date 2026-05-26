@@ -218,7 +218,7 @@ export function SplashCube() {
             margin: 0,
           }}
         >
-          Naekyoung Kim
+          Naekyoung Kwak
         </h1>
       </div>
     </div>
